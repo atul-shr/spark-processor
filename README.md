@@ -1,17 +1,17 @@
-# Employee Data Processor
+# Generic Data Processor
 
-A Python application for processing employee data from delimited files and loading it into databases with advanced querying and analysis capabilities.
+A Python application for processing structured data from delimited files and loading it into databases with advanced querying and analysis capabilities. While initially built for employee data, it can be adapted for any type of structured data.
 
 ## Features
 
 - **File Processing**
-  - Read delimited files (CSV, TSV, etc.)
+  - Read any delimited files (CSV, TSV, etc.)
   - Configurable delimiter and header options
-  - Error handling and logging
+  - Robust error handling and logging
 
 - **Database Integration**
   - Support for multiple database types (SQLite, PostgreSQL, etc.)
-  - Flexible write modes (append, replace)
+  - Configurable write modes (append, replace)
   - Secure credential management
 
 - **Advanced Querying**
@@ -28,12 +28,17 @@ A Python application for processing employee data from delimited files and loadi
 ## Project Structure
 
 ```
-spark-processor/
+data-processor/
 ├── src/
 │   ├── __init__.py
-│   ├── spark_processor.py    # Main data processing class
-│   ├── employee_queries.py   # Query functionality
+│   ├── spark_processor.py    # Core data processing class
+│   ├── employee_queries.py   # Data querying functionality
+│   ├── analysis.py          # Data analysis module
 │   └── config_handler.py     # Configuration management
+├── bin/
+│   ├── process.py           # Data processing script
+│   ├── analyze.py           # Analysis execution script
+│   └── query.py            # Query execution script
 ├── tests/
 │   ├── test_data_processor.py
 │   ├── test_employee_queries.py
@@ -41,11 +46,9 @@ spark-processor/
 │   └── test_analysis.py
 ├── config/
 │   ├── config.yaml          # Main configuration
-│   └── .env.example        # Environment variables template
+│   └── .env.example         # Environment variables template
 ├── data/
 │   └── source/             # Source data files
-├── main.py                 # Main execution script
-├── analyze_data.py         # Data analysis script
 └── requirements.txt        # Project dependencies
 ```
 
@@ -135,36 +138,60 @@ from src.config_handler import Config
 # Initialize processor
 processor = DataProcessor()
 
-# Read data
-df = processor.read_delimited_file('data/source/employees.csv')
+# Read data from any delimited file
+df = processor.read_delimited_file(
+    file_path='data/source/data.csv',
+    delimiter=',',  # or '\t' for TSV, '|' for pipe-delimited, etc.
+    header=True     # set to False if no header row
+)
 
-# Write to database
+# Write to any supported database
 processor.write_to_database(
     df,
-    table_name='employees',
-    db_url='sqlite:///data/employees.db',
-    mode='append'
+    table_name='data_table',
+    db_url='sqlite:///data/database.db',  # or postgresql://user:pass@host/db
+    mode='append'  # or 'replace' to overwrite
 )
 ```
 
-### Querying Data
+### Querying and Analyzing Data
 
 ```python
 from src.employee_queries import EmployeeQueries
+from src.analysis import Analysis
 
-# Initialize queries
-queries = EmployeeQueries('sqlite:///data/employees.db')
+# Initialize components
+queries = EmployeeQueries('sqlite:///data/database.db')
+analyzer = Analysis('sqlite:///data/database.db')
 
-# Find engineers with high salaries
-engineers = queries.query_by_criteria(
-    {'occupation': ['Software Engineer', 'DevOps Engineer'],
-     'salary': 100000},
-    sort_by='salary',
+# Query data with multiple criteria
+results = queries.query_by_criteria(
+    criteria={'column1': 'value1', 'column2': ['value2', 'value3']},
+    sort_by='column3',
     ascending=False
 )
 
-# Get salary statistics
-stats = queries.get_salary_stats_by_occupation()
+# Run analysis
+metrics = analyzer.department_metrics()
+distributions = analyzer.department_level_distribution()
+ranges = analyzer.salary_ranges()
+```
+
+### Using Command-Line Tools
+
+Process data:
+```bash
+./bin/process.py
+```
+
+Run analysis:
+```bash
+./bin/analyze.py
+```
+
+Execute queries:
+```bash
+./bin/query.py
 ```
 
 ## Contributing

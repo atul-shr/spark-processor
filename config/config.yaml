@@ -1,6 +1,6 @@
-# Sample configuration for the Spark processor
+# Data processor configuration
 source:
-  file_path: "data/source/employees.csv"
+  file_path: "data/source/employees_large.csv"  # Large dataset for performance testing
   delimiter: ","
   header: true
   file_format: "csv"
