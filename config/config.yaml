@@ -1,14 +1,12 @@
 # Sample configuration for the Spark processor
 source:
-  file_path: "/path/to/your/input/files/*.csv"
+  file_path: "data/source/employees.csv"
   delimiter: ","
   header: true
   file_format: "csv"
 
 target:
-  type: "postgresql"  # or mysql, oracle, etc.
-  host: "localhost"
-  port: 5432
-  database: "your_database"
-  table: "your_target_table"
-  mode: "append"  # or overwrite, ignore, error
+  type: "sqlite"
+  database: "data/employees.db"
+  table: "employees"
+  mode: "overwrite"  # or append, ignore, error

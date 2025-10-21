@@ -1,9 +1,9 @@
 """
-Main script to run the Spark processor.
+Main script to run the data processor.
 """
 import logging
 from pathlib import Path
-from src.spark_processor import SparkProcessor
+from src.spark_processor import DataProcessor
 from src.config_handler import Config
 
 def setup_logging():
@@ -22,8 +22,8 @@ def main():
         # Load configuration
         config = Config(str(Path("config/config.yaml")))
         
-        # Initialize Spark processor
-        processor = SparkProcessor()
+        # Initialize data processor
+        processor = DataProcessor()
         
         # Read source file
         source_config = config.source_config

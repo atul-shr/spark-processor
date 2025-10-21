@@ -1,0 +1,21 @@
+id,name,age,city,occupation,department,level,salary
+1,John Doe,32,New York,Software Engineer,Engineering,Senior,95000
+2,Jane Smith,28,San Francisco,Data Scientist,Data Science,Senior,105000
+3,Michael Johnson,45,Chicago,Project Manager,Operations,Principal,85000
+4,Sarah Williams,35,Boston,Product Manager,Product,Senior,98000
+5,Robert Brown,29,Seattle,DevOps Engineer,Engineering,Mid-Level,92000
+6,Emily Davis,31,Austin,UI/UX Designer,Design,Mid-Level,78000
+7,David Wilson,38,Denver,System Architect,Engineering,Principal,115000
+8,Lisa Anderson,33,Portland,QA Engineer,Engineering,Mid-Level,75000
+9,James Taylor,42,Miami,Business Analyst,Operations,Senior,82000
+10,Amanda Martinez,36,Los Angeles,Full Stack Developer,Engineering,Senior,98000
+11,Mark Thompson,39,Phoenix,Cloud Architect,Engineering,Principal,120000
+12,Rachel White,27,Houston,Frontend Developer,Engineering,Junior,85000
+13,Steven Clark,44,Atlanta,Technical Lead,Engineering,Principal,112000
+14,Jessica Lee,31,Dallas,Data Engineer,Data Science,Senior,95000
+15,Kevin Moore,37,Philadelphia,Backend Developer,Engineering,Senior,92000
+16,Michelle Chen,29,San Diego,ML Engineer,Data Science,Senior,108000
+17,Thomas Wright,41,Detroit,Solutions Architect,Engineering,Principal,118000
+18,Laura Garcia,34,Minneapolis,Database Admin,Engineering,Senior,88000
+19,Daniel Kim,30,Raleigh,Mobile Developer,Engineering,Mid-Level,82000
+20,Jennifer Adams,36,Nashville,Security Engineer,Security,Senior,98000
